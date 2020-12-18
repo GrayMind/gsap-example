@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>example - 02</title>
+  <script src="../lib/gsap/gsap.min.js"></script>
+
+  <style>
+    body {
+      margin-left: 300px;
+      overflow: hidden;
+    }
+
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <br>
+  <button id="play">播放</button>
+  <button id="pause">暂停</button>
+  <button id="resume">继续</button>
+  <button id="restart">重新开始</button>
+</body>
+
+<script>
+  window.onload = function () {
+    main()
+  }
+
+  function main() {
+    let tween = gsap.to('#box', {
+      duration: 4,
+      paused: true,
+      x: 300,
+    })
+
+    document.querySelector("#play").onclick = () => tween.play();
+    document.querySelector("#pause").onclick = () => tween.pause();
+    document.querySelector("#resume").onclick = () => tween.resume();
+    document.querySelector("#restart").onclick = () => tween.restart();
+  }
+</script>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>example - 02</title>
+  <script src="../lib/gsap/gsap.min.js"></script>
+
+  <style>
+    body {
+      margin-left: 300px;
+      overflow: hidden;
+    }
+
+    .box {
+      width: 60px;
+      height: 60px;
+      background-color: aquamarine;
+      margin-bottom: 10px;
+    }
+
+    .color1 {
+      background-color: coral;
+    }
+
+    .color2 {
+      background-color: hotpink;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box1" class="box"></div>
+  <div id="box2" class="box color1"></div>
+  <div id="box3" class="box color2"></div>
+  <br>
+  <button id="play">播放</button>
+  <button id="pause">暂停</button>
+  <button id="resume">继续</button>
+  <button id="restart">重新开始</button>
+</body>
+
+<script>
+  window.onload = function () {
+    main()
+  }
+
+  function main() {
+
+    let tl = gsap.timeline({paused: true,})
+
+    tl.to('#box1', { duration: 2, x: 300, ease: 'none'})
+      .to('#box2', { duration: 2, x: 300, ease: 'none'}, '-=1')
+      .to('#box3', { duration: 2, x: 300, ease: 'none'}, '-=1')
+
+
+    document.querySelector("#play").onclick = () => tl.play();
+    document.querySelector("#pause").onclick = () => tl.pause();
+    document.querySelector("#resume").onclick = () => tl.resume();
+    document.querySelector("#restart").onclick = () => tl.restart();
+  }
+</script>
+
+</html>

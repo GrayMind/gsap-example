@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>example - 01</title>
+  <script src="../lib/gsap/gsap.min.js"></script>
+
+  <style>
+    body {
+      margin-left: 300px;
+      overflow: hidden;
+    }
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+</body>
+
+<script>
+  window.onload = function () {
+    main()
+  }
+
+  function main() {
+    // let obj = {
+    //   myProp: 0
+    // }
+    // let count = 1
+    // gsap.to(obj, {
+    //   myProp: 60,
+    //   duration: 1,
+    //   onUpdate: () => {
+    //     console.log('[gsap update]', count++, obj.myProp)
+    //   }
+    // })
+
+    // let $box = document.getElementById('box')
+    // gsap.to([$box], {
+    //   duration: 2,
+    //   delay: 1,
+    //   x: 300
+    // })
+
+    // gsap.to('#box', {
+    //   duration: 2,
+    //   delay: 1,
+    //   x: 300
+    // })
+    
+    // gsap.from('#box', {
+    //   duration: 2,
+    //   delay: 1,
+    //   x: 300
+    // })
+
+    gsap.fromTo('#box', {
+      x: -110
+    }, {
+      duration: 2,
+      delay: 1,
+      x: 300
+    })
+
+  }
+</script>
+
+</html>
