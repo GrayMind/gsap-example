@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>打字动画 js</title>
+
+  <style>
+    body {
+      margin-left: 200px;
+    }
+
+    span {
+      font-size: 24px;
+    }
+
+    @keyframes caret {
+      from {
+        color: transparent;
+      }
+    }
+    .typing {
+      font-weight: 600;
+      animation: caret 1s steps(2) infinite;
+    }
+  </style>
+</head>
+
+<body>
+  <span id="container"></span><span class="typing">_</span>
+</body>
+
+<script>
+  function main() {
+    let wordList = 'hello world!'.split('')
+    let animationDom = document.getElementById('container')
+    let timer = -1
+    let animation = () => {
+      if (wordList.length > 0) {
+        animationDom.innerText += wordList.shift()
+        timer = setTimeout(animation, 600)
+      } else {
+        clearTimeout(timer)
+      }
+    }
+    animation()
+  }
+
+  main()
+</script>
+
+</html>

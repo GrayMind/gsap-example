@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>打字动画 gsap</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/TextPlugin.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 200px;
+    }
+    
+    h1 {
+      font-size: 24px;
+    }
+
+    h1 .hi {
+      display: inline-block;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>
+    <span class='hi'>Hi, 我是</span><span class="text"></span><span class="cursor">_</span>
+  </h1>
+  <h1 style="margin-top: 100px;">
+    <span class="text2"></span><span class="cursor">_</span>
+  </h1>
+    
+</body>
+
+<script>
+  function main() {
+    const words = ["一个打工人。", "一个干饭人。", "一个程序员。"]
+
+    let cursor = gsap.to('.cursor', {
+      opacity: 0,
+      repeat: -1,
+      ease: "power2.inOut",
+    })
+
+    let masterTl = gsap.timeline({delay: 1, repeat: -1,})
+
+    words.forEach(word => {
+      let tl = gsap.timeline({
+        repeat: 1,
+        yoyo: true,
+        repeatDelay: 1
+      })
+      tl.to('.text', {
+        duration: 1.5,
+        text: word
+      })
+      masterTl.add(tl)
+    })
+
+    gsap.to('.text2', { duration: 4, text: 'hello world!', ease: 'none' })
+  }
+
+  main()
+</script>
+
+</html>
